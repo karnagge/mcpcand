@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  mcp-divulgacandcontas:
+    build: .
+    image: mcp-divulgacandcontas-server:latest
+    container_name: mcp-divulgacandcontas-server
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    # Para uso com stdio transport, mapear stdin/stdout
+    stdin_open: true
+    tty: true
+    # Para uso futuro com HTTP transport
+    # ports:
+    #   - "3000:3000"
+    networks:
+      - mcp-network
+    # Healthcheck
+    healthcheck:
+      test: ["CMD", "node", "-e", "process.exit(0)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  mcp-network:
+    driver: bridge
