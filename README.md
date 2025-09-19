@@ -52,28 +52,50 @@ chmod +x mcp-server.sh
 ./mcp-server.sh clean
 ```
 
-### Usando Docker (Recomendado)
+## 📦 Imagem Docker
 
-1. **Build da imagem:**
+A imagem Docker está disponível no Docker Hub:
+
+**🔗 Docker Hub:** [`karnagge/mcp-divulgacandcontas`](https://hub.docker.com/r/karnagge/mcp-divulgacandcontas)
+
+**📋 Tags disponíveis:**
+- `latest` - Versão mais recente
+- `v1.0.0` - Versão estável 1.0.0
+
+**💾 Tamanho:** ~227MB (otimizada com Alpine Linux)
+
+**🔧 Uso rápido:**
 ```bash
-docker build -t mcp-divulgacandcontas-server .
-# OU usando o script
-./mcp-server.sh build-docker
+docker run -it --rm karnagge/mcp-divulgacandcontas:latest
 ```
 
-2. **Executar com Docker Compose:**
+### Via Docker
+
+#### Opção 1: Usar imagem pré-construída (Recomendado)
 ```bash
-docker-compose up -d
-# OU usando o script
-./mcp-server.sh run-compose
+# Baixar e executar diretamente do Docker Hub
+docker run -it --rm karnagge/mcp-divulgacandcontas:latest
+
+# Ou executar como daemon
+docker run -d --name mcp-server -p 3000:3000 karnagge/mcp-divulgacandcontas:latest
 ```
 
-3. **Executar diretamente:**
-```bash
-docker run -it mcp-divulgacandcontas-server
-# OU usando o script
-./mcp-server.sh run-docker
-```
+#### Opção 2: Build local
+1. **Clone o repositório:**
+   ```bash
+   git clone https://github.com/karnagge/mcpcand.git
+   cd mcpcand
+   ```
+
+2. **Build da imagem:**
+   ```bash
+   docker build -t mcp-divulgacandcontas .
+   ```
+
+3. **Execute o container:**
+   ```bash
+   docker run -p 3000:3000 mcp-divulgacandcontas
+   ```
 
 ### Instalação Local
 
