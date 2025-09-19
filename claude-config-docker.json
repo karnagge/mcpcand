@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "divulgacandcontas": {
+      "command": "docker",
+      "args": [
+        "run", "-i", "--rm",
+        "karnagge/mcp-divulgacandcontas:latest"
+      ]
+    }
+  }
+}
